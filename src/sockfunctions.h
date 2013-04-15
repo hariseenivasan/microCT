@@ -23,6 +23,7 @@ LPSTR WSAstrerror(int errCode);
 #include <string.h>
 #include <errno.h>
 #endif
+
 #include <sys/types.h>
 //#include <stdlib.h>
 
@@ -30,10 +31,13 @@ LPSTR WSAstrerror(int errCode);
 #ifndef INADDR_NONE
 #define INADDR_NONE	0xffffffff
 #endif /* INADDR_NONE */
-int	__cdecl errexit(const char *format, ...);
+
+
 #ifdef _WIN32
 SOCKET __cdecl
+int	__cdecl errexit(const char *format, ...);
 #else
-int
+int errexit(const char *format, ...);
 #endif
-passivesock(int portnumber,  char *transport,  int qlen);
+
+int passivesock(int portnumber,  char *transport,  int qlen);

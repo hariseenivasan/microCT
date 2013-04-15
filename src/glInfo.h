@@ -21,7 +21,8 @@
 #include <vector>
 
 // struct variable to store OpenGL info
-static struct glInfo
+struct glInfo
+//static struct glInfo
 {
     std::string vendor;
     std::string renderer;

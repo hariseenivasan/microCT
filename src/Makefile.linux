@@ -1,0 +1,24 @@
+# Video Opengl Makefile
+
+CC=g++
+FFMPEG_LIBS=libavdevice libavformat libavfilter libavcodec libswscale libavutil
+CFLAGS+=$(shell pkg-config  --cflags $(FFMPEG_LIBS))
+LDFLAGS+=$(shell pkg-config --libs $(FFMPEG_LIBS))
+
+#FFMPEG_INCLUDE?=../../../embedWork/mplayer/ffmpeg/
+FFMPEG_INCLUDE?=/usr/local/include
+INCLUDES:=-I$(FFMPEG_INCLUDE) 
+
+all: video_opengl
+
+video_opengl:
+	$(CC) $(INCLUDES) cyl.cpp errexit.c sockfunctions.cpp readBMP.c glInfo.cpp $(LDFLAGS) -o video_opengl -lglut -lGLU -lpthread
+
+clean:
+	rm -rf *o video_opengl
+
+.PHONY: clean
+
+
+
+
